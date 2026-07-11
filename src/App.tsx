@@ -1,13 +1,11 @@
-import logo from './assets/logo.png'
 import './index.css'
 import Board from "./Board.tsx";
+import Header from "./Header.tsx";
 
 function App() {
   return (
     <>
-      <header>
-        <img src={logo} className="logo" alt="logo" />
-      </header>
+      <Header />
       <section className="main">
         <Board />
       </section>
