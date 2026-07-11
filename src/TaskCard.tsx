@@ -2,7 +2,7 @@ type TaskProps = {
     title: string
 }
 
-function Task({title}: TaskProps) {
+function TaskCard({title}: TaskProps) {
     return (
         <div className="task-card">
             <h4 className="task-title">{title}</h4>
@@ -10,4 +10,4 @@ function Task({title}: TaskProps) {
     )
 }
 
-export default Task;
+export default TaskCard;

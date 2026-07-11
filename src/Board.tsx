@@ -1,9 +1,15 @@
-import Task from "./Task.tsx";
-import * as React from "react";
+import TaskCard from "./TaskCard.tsx";
 import CreateTaskModal from "./CreateTaskModal.tsx";
+import {useState} from "react";
+import type {Task} from "./types/Task.tsx"
 
 function Board() {
-    const [isCreateModalOpen, setIsCreateModalOpen] = React.useState(false);
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+    const [, setTasks] = useState<Task[]>([]);
+
+    function createTask(task: Task) : void {
+        setTasks((currenTasks) => [...currenTasks, task]);
+    }
 
     return (
         <div className="board">
@@ -14,8 +20,8 @@ function Board() {
                 <div className="board-column">
                     <h3 className="column-title">TODO</h3>
                     <div className="column-body">
-                        <Task title="[Feature] Create pets listing" />
-                        <Task title="[Feature] Edit pet" />
+                        <TaskCard title="[Feature] Create pets listing" />
+                        <TaskCard title="[Feature] Edit pet" />
                     </div>
                 </div>
                 <div className="board-column">
@@ -36,7 +42,7 @@ function Board() {
                 </div>
             </div>
             {
-                isCreateModalOpen ? <CreateTaskModal onClose={() => setIsCreateModalOpen(false)}/> : null
+                isCreateModalOpen ? <CreateTaskModal onCreate={createTask} onClose={() => setIsCreateModalOpen(false)}/> : null
             }
         </div>
     );
