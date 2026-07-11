@@ -1,11 +1,19 @@
 import TaskCard from "./TaskCard.tsx";
 import CreateTaskModal from "./CreateTaskModal.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import type {Task} from "./types/Task.tsx"
 
 function Board() {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-    const [, setTasks] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<Task[]>(() => {
+        const storedTasks = localStorage.getItem("tasks");
+
+        return storedTasks ? JSON.parse(storedTasks) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks])
 
     function createTask(task: Task) : void {
         setTasks((currenTasks) => [...currenTasks, task]);
@@ -20,8 +28,9 @@ function Board() {
                 <div className="board-column">
                     <h3 className="column-title">TODO</h3>
                     <div className="column-body">
-                        <TaskCard title="[Feature] Create pets listing" />
-                        <TaskCard title="[Feature] Edit pet" />
+                        { tasks.map((task) => (
+                            <TaskCard key={task.id} title={task.title} />
+                        ))}
                     </div>
                 </div>
                 <div className="board-column">

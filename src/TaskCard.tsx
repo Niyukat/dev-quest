@@ -1,5 +1,5 @@
 type TaskProps = {
-    title: string
+    title: string;
 }
 
 function TaskCard({title}: TaskProps) {
