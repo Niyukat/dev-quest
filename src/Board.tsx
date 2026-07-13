@@ -2,9 +2,11 @@ import TaskCard from "./TaskCard.tsx";
 import CreateTaskModal from "./CreateTaskModal.tsx";
 import {useEffect, useState} from "react";
 import type {Task} from "./types/Task.tsx"
+import ShowTaskModal from "./ShowTaskModal.tsx";
 
 function Board() {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+    const [selectedTask, setSelectedTask] = useState<Task | null>(null);
     const [tasks, setTasks] = useState<Task[]>(() => {
         const storedTasks = localStorage.getItem("tasks");
 
@@ -21,7 +23,7 @@ function Board() {
 
     return (
         <div className="board">
-            <div className="board-actions">
+            <div  className="board-actions">
                 <button type="button" onClick={() => setIsCreateModalOpen(true)} className="create-task-btn">Create</button>
             </div>
             <div className="task-board">
@@ -29,7 +31,7 @@ function Board() {
                     <h3 className="column-title">TODO</h3>
                     <div className="column-body">
                         { tasks.map((task) => (
-                            <TaskCard key={task.id} title={task.title} />
+                            <TaskCard onClick={() => setSelectedTask(task)} key={task.id} title={task.title} />
                         ))}
                     </div>
                 </div>
@@ -51,7 +53,10 @@ function Board() {
                 </div>
             </div>
             {
-                isCreateModalOpen ? <CreateTaskModal onCreate={createTask} onClose={() => setIsCreateModalOpen(false)}/> : null
+                isCreateModalOpen && <CreateTaskModal onCreate={createTask} onClose={() => setIsCreateModalOpen(false)}/>
+            }
+            {
+                selectedTask && <ShowTaskModal task={selectedTask} onClose={() => setSelectedTask(null)}/>
             }
         </div>
     );
