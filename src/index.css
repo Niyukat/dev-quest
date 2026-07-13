@@ -14,6 +14,10 @@ body {
   font-family: "Georgia", serif;
 }
 
+button, [role=button] {
+  cursor: pointer;
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -47,13 +51,9 @@ body {
 }
 
 .close-modal-btn {
-  color: red;
+  color: #b91c1c;
   background-color: transparent;
   border: none;
-}
-
-.close-modal-btn:hover {
-  cursor: pointer;
 }
 
 .modal {
@@ -112,10 +112,6 @@ header {
   border-radius: 4px;
 }
 
-.create-task-btn:hover {
-  cursor: pointer;
-}
-
 .task-board {;
   display: flex;
   gap: 20px;
@@ -127,7 +123,6 @@ header {
   border: none;
   padding: 10px;
   color: white;
-  cursor: pointer;
   width: 100px;
   border-radius: 4px;
 }
@@ -156,17 +151,69 @@ header {
 
 .task-card {
   background-color: white;
-  padding-top: 2px;
   border-radius: 2px;
+  min-height: 40px;
 }
 
-.task-card:hover {
-  cursor: pointer;
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .task-title {
-  font-size: 0.8em;
+  font-size: 0.8rem;
   padding: 8px;
   color: #6c6c6c;
   font-family: Helvetica, sans-serif;
+  width: 80%;
+}
+
+.task-actions {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.task-card:hover .task-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.task-delete {
+  border: none;
+  background: transparent;
+  color: #b91c1c;
+  padding: 6px;
+}
+
+.delete-choices-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.delete-confirm-btn {
+  background-color: #b91c1c;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.1rem;
+  border-radius: 4px;
+
+}
+
+.delete-cancel-btn {
+  background-color: #e3d200;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.1rem;
+  border-radius: 4px;
+}
+
+.delete-confirm-btn:hover, .delete-cancel-btn:hover {
+  box-shadow: 0 6px 6px rgba(24, 24, 24, 0.29);
 }
