@@ -1,5 +1,5 @@
 import Modal from "./Modal.tsx";
-import type {Task} from "./types/Task.tsx";
+import type {Task} from "./types/Task.ts";
 
 type TaskModalProps = {
     task: Task;
