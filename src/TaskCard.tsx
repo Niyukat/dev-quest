@@ -1,12 +1,15 @@
-type TaskProps = {
-    title: string;
-}
+type TaskCardProps = {
+    onClick: () => void;
+    title: string
+};
 
-function TaskCard({title}: TaskProps) {
+function TaskCard({title, onClick}: TaskCardProps) {
     return (
-        <div className="task-card">
-            <h4 className="task-title">{title}</h4>
-        </div>
+        <>
+            <div onClick={onClick} className="task-card">
+                <h4 className="task-title">{title}</h4>
+            </div>
+        </>
     )
 }
 

@@ -160,6 +160,10 @@ header {
   border-radius: 2px;
 }
 
+.task-card:hover {
+  cursor: pointer;
+}
+
 .task-title {
   font-size: 0.8em;
   padding: 8px;

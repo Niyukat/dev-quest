@@ -13,7 +13,7 @@ function CreateTaskModal({onClose, onCreate}: CreateTaskModalProps) {
         onClose();
     }
 
-    return <Modal title="Create Task" onClose={() => onClose()}><CreateTaskForm onSubmit={handleSubmit}/></Modal>
+    return <Modal title="Create Task" onClose={onClose}><CreateTaskForm onSubmit={handleSubmit}/></Modal>
 }
 
 export default CreateTaskModal;
