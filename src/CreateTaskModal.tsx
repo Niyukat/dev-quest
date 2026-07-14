@@ -1,6 +1,6 @@
 import Modal from "./Modal.tsx";
 import CreateTaskForm from "./CreateTaskForm.tsx";
-import type {Task} from "./types/Task.tsx";
+import type {Task} from "./types/Task.ts";
 
 type CreateTaskModalProps = {
     onClose: () => void,

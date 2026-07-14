@@ -1,4 +1,4 @@
-import type {Task} from "./types/Task.tsx";
+import type {Task} from "./types/Task.ts";
 
 type TaskFormProps = {
     onSubmit: (task: Task) => void
