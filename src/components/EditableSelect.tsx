@@ -1,4 +1,5 @@
 import type {ReactNode} from "react";
+import './editable.css';
 
 type EditableSelectProps<T extends string> = {
     onSave: (value: T) => void;
@@ -13,7 +14,7 @@ function EditableSelect<T extends string>({onSave, value, name, children}: Edita
             onChange={(e)=> onSave(e.currentTarget.value as T)}
             name={name}
             value={value}
-            className="task-status-select">
+            className="editable-select">
             {children}
         </select>
     );

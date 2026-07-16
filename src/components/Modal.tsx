@@ -1,6 +1,7 @@
 import {createPortal} from "react-dom";
 import {type ReactNode, useEffect} from "react";
 import {X} from "lucide-react";
+import './Modal.css';
 
 type ModalProps = {
     title: string | ReactNode,

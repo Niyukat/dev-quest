@@ -1,0 +1,37 @@
+.editable-field-container {
+    display: flex;
+    gap: 10px;
+}
+
+.editable-field-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.editable-input {
+    field-sizing: content;
+    border: none;
+    width: 100%;
+    max-width: 100%;
+}
+
+.editable-input:focus {
+    outline: none;
+    background-color: #eeeeee;
+}
+
+.editable-select {
+    border-radius: 4px;
+}
+
+.edit-confirm-btn {
+    color: #39b91c;
+    background: transparent;
+    border: none;
+}
+
+.edit-cancel-btn {
+    color: #e3d200;
+    background: transparent;
+    border: none;
+}

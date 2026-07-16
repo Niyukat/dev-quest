@@ -1,5 +1,6 @@
 import {Check, X} from "lucide-react";
 import type {ReactNode} from "react";
+import './editable.css';
 
 type EditableFieldProps = {
     onSubmit: (formData: FormData) => void;

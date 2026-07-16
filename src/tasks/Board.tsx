@@ -6,6 +6,7 @@ import ShowTaskModal from "./ShowTaskModal.tsx";
 import DeleteTaskModal from "./DeleteTaskModal.tsx";
 import { Trash2 } from "lucide-react";
 import {TASK_STATUS, TASK_STATUS_LABELS} from "./types/TaskStatus.ts";
+import './Board.css';
 
 function Board() {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
