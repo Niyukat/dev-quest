@@ -48,6 +48,13 @@ button, [role=button] {
 .modal-header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-title-container {
+  width: 100%;
+  max-width: 80%;
+  word-break: break-word;
 }
 
 .close-modal-btn {
@@ -68,7 +75,8 @@ button, [role=button] {
 }
 
 .modal-body {
-  margin-top: 30px;
+  margin-top: 10px;
+  word-break: break-word;
 }
 
 header {
@@ -172,6 +180,8 @@ header {
 .task-actions {
   opacity: 0;
   pointer-events: none;
+  padding-top: 6px;
+  padding-right: 6px;
 }
 
 .task-card:hover .task-actions {
@@ -183,7 +193,6 @@ header {
   border: none;
   background: transparent;
   color: #b91c1c;
-  padding: 6px;
 }
 
 .delete-choices-container {
@@ -216,4 +225,46 @@ header {
 
 .delete-confirm-btn:hover, .delete-cancel-btn:hover {
   box-shadow: 0 6px 6px rgba(24, 24, 24, 0.29);
+}
+
+.editable-field-container {
+  display: flex;
+  gap: 10px;
+}
+
+.editable-field-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.editable-input {
+  field-sizing: content;
+  border: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+.editable-input {
+  outline: none;
+  background-color: #eeeeee;
+}
+
+.edit-confirm-btn {
+  color: #39b91c;
+  background: transparent;
+  border: none;
+}
+
+.edit-cancel-btn {
+  color: #e3d200;
+  background: transparent;
+  border: none;
+}
+
+.task-status-select {
+  border-radius: 4px;
+}
+
+.task-details {
+  margin-top: 40px;
 }

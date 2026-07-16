@@ -1,4 +1,4 @@
-import Modal from "./Modal.tsx";
+import Modal from "../components/Modal.tsx";
 import CreateTaskForm from "./CreateTaskForm.tsx";
 import type {Task} from "./types/Task.ts";
 

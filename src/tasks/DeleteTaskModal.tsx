@@ -1,5 +1,5 @@
 import type {Task} from "./types/Task.ts";
-import Modal from "./Modal.tsx";
+import Modal from "../components/Modal.tsx";
 
 type DeleteTaskModalProps = {
     onConfirm: (task: Task) => void;

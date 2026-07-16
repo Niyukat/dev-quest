@@ -1,5 +1,5 @@
 import './index.css'
-import Board from "./Board.tsx";
+import Board from "./tasks/Board.tsx";
 import Header from "./Header.tsx";
 
 function App() {
