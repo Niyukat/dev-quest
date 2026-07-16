@@ -1,4 +1,5 @@
 import type {Task} from "./types/Task.ts";
+import {TASK_STATUS} from "./types/TaskStatus.ts";
 
 type TaskFormProps = {
     onSubmit: (task: Task) => void
@@ -9,7 +10,8 @@ function CreateTaskForm({onSubmit}: TaskFormProps) {
         const task: Task = {
             id: crypto.randomUUID(),
             title: String(formData.get("taskTitle")),
-            description: String(formData.get("taskDescription"))
+            description: String(formData.get("taskDescription")),
+            status: TASK_STATUS.TODO
         };
 
         onSubmit(task)

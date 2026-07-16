@@ -1,0 +1,17 @@
+export const TASK_STATUS = {
+    TODO: "TODO",
+    BLOCKED: "BLOCKED",
+    IN_PROGRESS: "IN_PROGRESS",
+    IN_TESTING: "IN_TESTING",
+    CLOSED: "CLOSED",
+} as const;
+
+export const TASK_STATUS_LABELS = {
+    [TASK_STATUS.TODO]: "TODO",
+    [TASK_STATUS.BLOCKED]: "BLOCKED",
+    [TASK_STATUS.IN_PROGRESS]: "IN PROGRESS",
+    [TASK_STATUS.IN_TESTING]: "IN TESTING",
+    [TASK_STATUS.CLOSED]: "CLOSED"
+} as const;
+
+export type TaskStatus = typeof TASK_STATUS[keyof typeof TASK_STATUS];

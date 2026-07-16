@@ -3,7 +3,7 @@ import {type ReactNode, useEffect} from "react";
 import {X} from "lucide-react";
 
 type ModalProps = {
-    title: string,
+    title: string | ReactNode,
     children: ReactNode,
     onClose: () => void
 }
@@ -27,7 +27,9 @@ function Modal({title, children, onClose}: ModalProps) {
         <div className="modal-overlay">
             <div className="modal">
                 <div className="modal-header">
-                    <h3 className="modal-title">{title}</h3>
+                    <div className="modal-title-container">
+                        {typeof title === "string" ? <h3 className="modal-title">{title}</h3> : title}
+                    </div>
                     <button onClick={() => onClose()} className="close-modal-btn"><X /></button>
                 </div>
                 <div className="modal-body">
