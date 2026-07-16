@@ -7,6 +7,7 @@ import DeleteTaskModal from "./DeleteTaskModal.tsx";
 import { Trash2 } from "lucide-react";
 import {TASK_STATUS, TASK_STATUS_LABELS} from "./types/TaskStatus.ts";
 import './Board.css';
+import Column from "./Column.tsx";
 
 function Board() {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -48,9 +49,8 @@ function Board() {
             <div className="task-board">
                 {
                     Object.values(TASK_STATUS).map((status): ReactNode => {
-                        return (<div key={status} className="board-column">
-                            <h3 className="column-title">{TASK_STATUS_LABELS[status]}</h3>
-                            <div className="column-body">
+                        return (
+                            <Column key={status} title={TASK_STATUS_LABELS[status]}>
                                 { tasks.map((task) => (
                                     status === task.status &&
                                     <TaskCard
@@ -58,14 +58,14 @@ function Board() {
                                         key={task.id}
                                         title={task.title}
                                         actions={
-                                            <button onClick={() => setDeletedTask(task)} type="button" className="task-delete">
-                                                <Trash2 size={18} />
-                                            </button>
-                                        }
+                                        <button onClick={() => setDeletedTask(task)} type="button" className="task-delete">
+                                            <Trash2 size={18} />
+                                        </button>
+                                    }
                                     />
                                 ))}
-                            </div>
-                        </div>)
+                            </Column>
+                        )
                     })
                 }
             </div>
