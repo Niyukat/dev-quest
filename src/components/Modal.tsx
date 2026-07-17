@@ -6,10 +6,11 @@ import './Modal.css';
 type ModalProps = {
     title: string | ReactNode,
     children: ReactNode,
+    footer: ReactNode,
     onClose: () => void
 }
 
-function Modal({title, children, onClose}: ModalProps) {
+function Modal({title, children, footer, onClose}: ModalProps) {
     const modal = document.getElementById("modal-container");
 
     useEffect(() => {
@@ -35,6 +36,9 @@ function Modal({title, children, onClose}: ModalProps) {
                 </div>
                 <div className="modal-body">
                     {children}
+                </div>
+                <div className="modal-footer">
+                    {footer}
                 </div>
             </div>
         </div>

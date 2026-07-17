@@ -51,13 +51,13 @@
     margin-top: 20px;
 }
 
-.create-task-submit {
+.submit-btn {
     background-color: #b91c1c;
+    color: white;
     border: none;
     padding: 10px;
-    color: white;
-    width: 100px;
     border-radius: 4px;
+    width: 100px;
 }
 
 .board-column {
@@ -154,4 +154,52 @@
 
 .task-details {
     margin-top: 40px;
+}
+
+.comments-section {
+    margin-top: 20px;
+}
+
+.comment-form {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.comment-form textarea {
+    width: 100%;
+}
+
+.comment-form .submit-btn {
+    margin-top: 10px;
+}
+
+.comments-container {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 200px;
+}
+
+.comment {
+    border: 1px solid #b91c1c;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.comment-date {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #b91c1c;
+}
+
+.comment-content {
+    margin-top: 10px;
+}
+
+.empty-comments {
+    text-align: center;
+    font-style: italic;
+    color: gray;
 }
