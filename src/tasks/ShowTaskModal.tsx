@@ -6,6 +6,8 @@ import EditableText from "../components/EditableText.tsx";
 import EditableSelect from "../components/EditableSelect.tsx";
 import {TASK_STATUS, TASK_STATUS_LABELS} from "./types/TaskStatus.ts";
 import type {Comment} from "./types/Comment.ts";
+import CommentCard from "./CommentCard.tsx";
+import {Trash2} from "lucide-react";
 
 type TaskModalProps = {
     task: Task;
@@ -27,6 +29,10 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
     useEffect(() => {
         localStorage.setItem(indexStorage, JSON.stringify(comments));
     }, [comments, indexStorage])
+
+    function deleteComment(comment: Comment) {
+        setComments((currentComments) => currentComments.filter(item => item.id !== comment.id));
+    }
 
     function createComment(comment: Comment) {
         setComments((currentComments) => [...currentComments, comment]);
@@ -101,12 +107,15 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
                     <div className="comments-container">
                         {
                             comments.map((comment) => {
-                                return (
-                                    <div key={comment.id} className="comment">
-                                        <p className="comment-date">{new Date(comment.createdAt).toLocaleString("en-GB")}</p>
-                                        <p className="comment-content">{comment.content}</p>
-                                    </div>
-                                )
+                                return <CommentCard
+                                    key={comment.id}
+                                    comment={comment}
+                                    actions={
+                                        <button onClick={() => deleteComment(comment)} type="button" className="action-delete-btn">
+                                            <Trash2 size={18} />
+                                        </button>
+                                    }
+                                />
                             })
                         }
                     </div>

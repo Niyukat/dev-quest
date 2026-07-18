@@ -56,12 +56,12 @@ function Board() {
                                     <TaskCard
                                         onClick={() => setSelectedTask(task)}
                                         key={task.id}
-                                        title={task.title}
+                                        task={task}
                                         actions={
-                                        <button onClick={() => setDeletedTask(task)} type="button" className="task-delete">
-                                            <Trash2 size={18} />
-                                        </button>
-                                    }
+                                            <button onClick={() => setDeletedTask(task)} type="button" className="action-delete-btn">
+                                                <Trash2 size={18} />
+                                            </button>
+                                        }
                                     />
                                 ))}
                             </Column>
