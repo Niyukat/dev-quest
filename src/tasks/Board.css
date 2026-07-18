@@ -102,19 +102,19 @@
     width: 80%;
 }
 
-.task-actions {
+.actions-btn {
     opacity: 0;
     pointer-events: none;
     padding-top: 6px;
     padding-right: 6px;
 }
 
-.task-card:hover .task-actions {
+.task-card:hover .actions-btn {
     opacity: 1;
     pointer-events: auto;
 }
 
-.task-delete {
+.action-delete-btn {
     border: none;
     background: transparent;
     color: #b91c1c;
@@ -182,20 +182,31 @@
     max-height: 30vh;
 }
 
-.comment {
+.comment-card {
     border: 1px solid #b91c1c;
     border-radius: 4px;
-    padding: 10px;
+}
+
+.comment-card:hover .actions-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .comment-date {
     font-style: italic;
     font-size: 0.8rem;
     color: #b91c1c;
+    padding: 10px;
 }
 
 .comment-content {
-    margin-top: 10px;
+    padding: 10px;
 }
 
 .empty-comments {
