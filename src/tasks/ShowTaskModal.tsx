@@ -18,6 +18,7 @@ type TaskModalProps = {
 function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
     const [isEditTitle, setIsEditTitle] = useState(false);
     const [isEditDescription, setIsEditDescription] = useState(false);
+    const [selectedComment, setSelectedComment] = useState<Comment|null>(null);
     const indexStorage = `${task.id}_comments`
 
     const [comments, setComments] = useState<Comment[]>(() => {
@@ -38,6 +39,11 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
         setComments((currentComments) => [...currentComments, comment]);
     }
 
+    function editComment(comment: Comment) {
+        setSelectedComment(null);
+        setComments((currentComments) => currentComments.map((item) => item.id === comment.id ? comment : item));
+    }
+
     function handleSubmit(formData: FormData) {
         const comment: Comment = {
             id: crypto.randomUUID(),
@@ -49,13 +55,12 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
         createComment(comment);
     }
 
-    function handleEdit(data: Partial<Task>) {
-        const editedTask = {
-            ...task,
-            ...data,
-        };
+    function handleEditComment(editedComment: Comment, data: Partial<Comment>) {
+        editComment({...editedComment, ...data,});
+    }
 
-        onSave(editedTask);
+    function handleEditTask(data: Partial<Task>) {
+        onSave({...task, ...data});
     }
 
     return <Modal
@@ -66,7 +71,7 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
                     onCancel={() => setIsEditTitle(false)}
                     onSave={(value) => {
                         setIsEditTitle(false);
-                        handleEdit({title: value});
+                        handleEditTask({title: value});
                     }}
                     defaultValue={task.title}
                 />
@@ -74,7 +79,7 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
         }
         onClose={onClose}
         >
-        <EditableSelect onSave={(value) => handleEdit({status: value})} value={task.status} name="status">
+        <EditableSelect onSave={(value) => handleEditTask({status: value})} value={task.status} name="status">
             {
                 Object.values(TASK_STATUS).map((status) =>
                     <option key={status} value={status}>{TASK_STATUS_LABELS[status]}</option>
@@ -89,7 +94,7 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
                         onCancel={() => setIsEditDescription(false)}
                         onSave={(value) => {
                             setIsEditDescription(false);
-                            handleEdit({description: value});
+                            handleEditTask({description: value});
                         }}
                         defaultValue={task.description}
                     />
@@ -115,7 +120,20 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
                                             <Trash2 size={18} />
                                         </button>
                                     }
-                                />
+                                >
+                                    {
+                                        selectedComment?.id === comment.id ?
+                                            <EditableText
+                                                onSave={(value) => {
+                                                    handleEditComment(comment, {content: value});
+                                                }}
+                                                onCancel={() => setSelectedComment(null)}
+                                                defaultValue={comment.content}
+                                                name="content"
+                                            />
+                                            : <p onClick={() => setSelectedComment(comment)} className="comment-content">{comment.content}</p>
+                                    }
+                                </CommentCard>
                             })
                         }
                     </div>

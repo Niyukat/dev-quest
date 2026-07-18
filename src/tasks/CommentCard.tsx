@@ -1,12 +1,13 @@
 import type {Comment} from "./types/Comment.ts";
 import type {ReactNode} from "react";
 
-type CommentProps = {
+type CommentCardProps = {
     comment: Comment;
+    children: ReactNode;
     actions: ReactNode;
 }
 
-function CommentCard({comment, actions}: CommentProps) {
+function CommentCard({comment, children, actions}: CommentCardProps) {
     return (
         <div className="comment-card">
             <div className="comment-header">
@@ -15,7 +16,7 @@ function CommentCard({comment, actions}: CommentProps) {
                     {actions}
                 </div>
             </div>
-            <p className="comment-content">{comment.content}</p>
+            {children}
         </div>
     )
 }
