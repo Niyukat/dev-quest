@@ -67,29 +67,6 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
                 : <h3 onClick={() => setIsEditTitle(true)} className="modal-title">{task.title}</h3>
         }
         onClose={onClose}
-        footer={
-            <div className="comments-section">
-                <h3>Comments</h3>
-                <form action={handleSubmit} className="comment-form">
-                    <textarea name="content" className="input-field "></textarea>
-                    <button className="submit-btn">Create</button>
-                </form>
-                <div className="comments-container">
-                    {
-                        comments.length !== 0 ?
-                        comments.map((comment) => {
-                            return (
-                                <div key={comment.id} className="comment">
-                                    <p className="comment-date">{new Date(comment.createdAt).toLocaleString("en-GB")}</p>
-                                    <p className="comment-content">{comment.content}</p>
-                                </div>
-                            )
-                        })
-                            : <div className="empty-comments">No Comments</div>
-                    }
-                </div>
-            </div>
-        }
         >
         <EditableSelect onSave={(value) => handleEdit({status: value})} value={task.status} name="status">
             {
@@ -111,6 +88,29 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
                         defaultValue={task.description}
                     />
                     : <p onClick={() => setIsEditDescription(true)}>{task.description}</p>
+            }
+        </div>
+        <div className="comments-section">
+            <h3>Comments</h3>
+            <form action={handleSubmit} className="comment-form">
+                <textarea name="content" className="input-field "></textarea>
+                <button className="submit-btn">Create</button>
+            </form>
+            {
+                comments.length !== 0 ?
+                    <div className="comments-container">
+                        {
+                            comments.map((comment) => {
+                                return (
+                                    <div key={comment.id} className="comment">
+                                        <p className="comment-date">{new Date(comment.createdAt).toLocaleString("en-GB")}</p>
+                                        <p className="comment-content">{comment.content}</p>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    : <div className="empty-comments">No Comments</div>
             }
         </div>
     </Modal>
