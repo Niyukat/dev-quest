@@ -100,7 +100,7 @@ function ShowTaskModal({task, onClose, onSave}: TaskModalProps) {
             <h3>Comments</h3>
             <form action={handleSubmit} className="comment-form">
                 <textarea name="content" className="input-field "></textarea>
-                <button className="submit-btn">Create</button>
+                <button className="btn submit-btn">Create</button>
             </form>
             {
                 comments.length !== 0 ?
