@@ -27,7 +27,7 @@ function CreateTaskForm({onSubmit}: TaskFormProps) {
                 <label className="input-label" htmlFor="taskDescription">Description</label>
                 <textarea rows={6} className="input-field" name="taskDescription" id="taskDescription"/>
             </div>
-            <button className="submit-btn">Create</button>
+            <button className="btn submit-btn">Create</button>
         </form>
     );
 }
