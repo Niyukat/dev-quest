@@ -1,21 +1,16 @@
 import EditableField from "./EditableField.tsx";
 
 type EditableTextProps = {
-    onSave: (value: string) => void;
+    onSave: (value: string) => boolean;
     onCancel: () => void;
     defaultValue: string;
     name: string;
+    errors: string[];
 };
 
-function EditableText({onSave, onCancel, defaultValue, name}: EditableTextProps) {
+function EditableText({onSave, onCancel, defaultValue, name, errors}: EditableTextProps) {
     return (
-        <EditableField onSubmit={(formData: FormData) => {
-            const value = formData.get(name)
-
-            if (typeof value === "string") {
-                onSave(value);
-            }
-        }} onCancel={onCancel}>
+        <EditableField onSave={onSave} onCancel={onCancel} name={name} errors={errors}>
             <textarea
                 onBlur={(e) => {
                     const form = e.currentTarget.form;
@@ -25,7 +20,9 @@ function EditableText({onSave, onCancel, defaultValue, name}: EditableTextProps)
                         return;
                     }
 
-                    onSave(e.currentTarget.value);
+                    if (!onSave(e.currentTarget.value)) {
+                        e.currentTarget.focus();
+                    }
                 }}
                 name={name}
                 autoFocus={true}

@@ -1,8 +1,15 @@
 import type {Task} from "./Task.ts";
 
-export interface Comment {
+export type CommentInput = {
+    content: string;
+}
+
+export type Comment = CommentInput & {
     id: string;
     taskId: Task["id"]
-    content: string;
     createdAt: string;
+}
+
+export type CommentError = {
+    content?: string[];
 }

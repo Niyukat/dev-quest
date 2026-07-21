@@ -1,21 +1,16 @@
 import EditableField from "./EditableField.tsx";
 
 type EditableInputProps = {
-    onSave: (value: string) => void;
+    onSave: (value: string) => boolean;
     onCancel: () => void;
     defaultValue: string;
     name: string;
+    errors: string[];
 };
 
-function EditableInput({onSave, onCancel, defaultValue, name}: EditableInputProps) {
+function EditableInput({onSave, onCancel, defaultValue, name, errors}: EditableInputProps) {
     return (
-        <EditableField onSubmit={(formData: FormData) => {
-            const value = formData.get(name)
-
-            if (typeof value === "string") {
-                onSave(value);
-            }
-        }} onCancel={onCancel}>
+        <EditableField onSave={onSave} onCancel={onCancel} name={name} errors={errors}>
             <input
                 onBlur={(e) => {
                     const form = e.currentTarget.form;
@@ -25,7 +20,9 @@ function EditableInput({onSave, onCancel, defaultValue, name}: EditableInputProp
                         return;
                     }
 
-                    onSave(e.currentTarget.value);
+                    if (!onSave(e.currentTarget.value)) {
+                        e.currentTarget.focus();
+                    }
                 }}
                 name={name}
                 autoFocus={true}

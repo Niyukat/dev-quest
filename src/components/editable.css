@@ -1,6 +1,7 @@
 .editable-field-container {
     display: flex;
     gap: 10px;
+    align-items: flex-start;
 }
 
 .editable-field-actions {
