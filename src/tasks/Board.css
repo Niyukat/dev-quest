@@ -18,6 +18,12 @@
     border-color: #b91c1c;
 }
 
+.input-error {
+    color: #b91c1c;
+    list-style-position: inside;
+    font-size: 0.8rem;
+}
+
 .board {
     width: 90%;
 }
@@ -36,7 +42,7 @@
 .create-task-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     gap: 20px;
 }
 
